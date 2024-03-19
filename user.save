@@ -1,0 +1,10 @@
+=> 
+[32m#<User:0x00007f186934d158[0m
+ id: [36m[1mnil[0m,
+ username: [31m[1m"[0m[31mtestino[0m[31m[1m"[0m,
+ email: [31m[1m"[0m[31mtestino@mail.com[0m[31m[1m"[0m,
+ first_name: [31m[1m"[0m[31mTestino[0m[31m[1m"[0m,
+ last_name: [31m[1m"[0m[31mProbino[0m[31m[1m"[0m,
+ birth_date: Fri, 01 Jan 1988,
+ created_at: [36m[1mnil[0m,
+ updated_at: [36m[1mnil[0m[32m>[0m

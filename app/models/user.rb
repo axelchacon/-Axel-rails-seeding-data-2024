@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  validates :username, :email, presence: true, uniqueness: true
+  validates :username, :email, presence: true, uniqueness: {message: " ya ha sido registrado "}
   validates :username, length: { minimum: 6 }
   validates :email, format: { with: /\A\w+@\w+\.\w{2,3}\z/ }
 
