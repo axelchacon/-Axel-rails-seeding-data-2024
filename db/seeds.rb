@@ -5,10 +5,29 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
-puts "Hello From seeds"
-user = User.new(username: "testino", email:"testino@mail.com", first_name:"Testino", last_name:"Probino", birth_date:"1988-01-01")
-if user.save
-    puts "Creando el usuario satisfactoriamente"   
-else
-    p user.errors.full_messages.join(", ") #"Username  ya ha sido registrado , Email  ya ha sido registrado " Mira en app, en models y luego en user.rb lo de error con mensaje
-end
+
+########  Forma 1  ######################
+
+    # puts "Destroying all users"
+    # User.destroy_all
+    # puts "Creating the users"
+    # user = User.new(username: "testino", email:"testino@mail.com", first_name:"Testino", last_name:"Probino", birth_date:"1988-01-01")
+    # user1 = User.new(username: "testino1", email:"testino1@mail.com", first_name:"Testino1", last_name:"Probino1", birth_date:"1988-01-02")
+    # user2 = User.new(username: "testino2", email:"testino2@mail.com", first_name:"Testino2", last_name:"Probino2", birth_date:"1988-01-03")
+    # if user.save && user1.save && user2.save
+    #     puts "Creando el usuario satisfactoriamente"   
+    # else
+    #     p user.errors.full_messages.join(", ") #"Username  ya ha sido registrado , Email  ya ha sido registrado " Mira en app, en models y luego en user.rb lo de error con mensaje
+    #     p user1.errors.full_messages.join(", ")
+    #     p user2.errors.full_messages.join(", ")
+    # end
+
+
+########  Forma 2  ######################
+    puts "Destroying all users"
+    User.destroy_all
+    puts "Creating the users"
+    10.times do |n|
+        user = User.create(username: "testino#{n+1}", email:"testino#{n+1}@mail.com", first_name:"Testino#{n+1}", last_name:"Probino#{n+1}", birth_date:"1988-01-01")
+    end
+    
