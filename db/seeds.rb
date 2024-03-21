@@ -24,10 +24,31 @@
 
 
 ########  Forma 2  ######################
-    puts "Destroying all users"
-    User.destroy_all
-    puts "Creating the users"
-    10.times do |n|
-        user = User.create(username: "testino#{n+1}", email:"testino#{n+1}@mail.com", first_name:"Testino#{n+1}", last_name:"Probino#{n+1}", birth_date:"1988-01-01")
-    end
+    # puts "Destroying all users"
+    # User.destroy_all
+    # puts "Creating the users"
+    # 10.times do |n|
+    #     user = User.create(username: "testino#{n+1}", email:"testino#{n+1}@mail.com", first_name:"Testino#{n+1}", last_name:"Probino#{n+1}", birth_date:"1988-01-01")
+    # end
     
+
+########  Forma 3  ######################
+require "faker"
+puts "Destroying all users"
+User.destroy_all
+puts "Creating the users"
+10.times do |n|
+   user= User.create(
+    username: Faker::Internet.unique.username(specifier: 6..11),
+    email: Faker::Internet.unique.email(domain: "codeable.com"),
+    first_name: "Testino#{n+1}",
+    last_name: "Probino#{n+1}",
+    birth_date: "1988-01-01"
+    )
+    if user.persisted?
+        puts "Usario creado"
+    else
+        puts user.errors.full_messages.join(", ")
+        p user
+    end
+end

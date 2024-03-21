@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   validates :username, :email, presence: true, uniqueness: {message: " ya ha sido registrado "}
   validates :username, length: { minimum: 6 }
-  validates :email, format: { with: /\A\w+@\w+\.\w{2,3}\z/ }
+  validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }
 
   # Using comparison:
   # validates :birth_date, comparison: { less_than: Time.zone.today,
