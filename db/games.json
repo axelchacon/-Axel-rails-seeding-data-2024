@@ -1,0 +1,56 @@
+[
+  {
+    "name": "Borderlands 3",
+    "release_date": "2019-09-12",
+    "genre": "Shooter",
+    "price": 3900
+  },
+  {
+    "name": "Pokémon Shield",
+    "release_date": "2019-11-14",
+    "genre": "Adventure",
+    "price": 2900
+  },
+  {
+    "name": "Star Control: Origins",
+    "release_date": "2018-09-19",
+    "genre": "Simulator",
+    "price": 1900
+  },
+  {
+    "name": "The Witcher 3: Wild Hunt",
+    "release_date": "2015-05-18",
+    "genre": "Role-playing (RPG)",
+    "price": 3900
+  },
+  {
+    "name": "Control",
+    "release_date": "2019-08-26",
+    "genre": "Shooter",
+    "price": 1900
+  },
+  {
+    "name": "Spellforce: The Order of Dawn",
+    "release_date": "2003-11-27",
+    "genre": "Strategy",
+    "price": 22000
+  },
+  {
+    "name": "Endless Legend",
+    "release_date": "2014-09-17",
+    "genre": "Strategy",
+    "price": 1490
+  },
+  {
+    "name": "The Settlers: Rise of an Empire",
+    "release_date": "2007-09-24",
+    "genre": "Simulator",
+    "price": 1900
+  },
+  {
+    "name": "The Legend of Zelda: Breath of the Wild",
+    "release_date": "2017-03-02",
+    "genre": "Role-playing (RPG)",
+    "price": 4900
+  }
+]

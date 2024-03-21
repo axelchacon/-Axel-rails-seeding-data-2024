@@ -34,9 +34,11 @@
 
 ########  Forma 3  ######################
 require "faker"
-puts "Destroying all users"
+require "json"
+puts "Destroying all data"
 User.destroy_all
-puts "Creating the users"
+Game.destroy_all
+puts "Users: Creating the users"
 10.times do |n|
    first_name= Faker::Name.first_name
    user= User.create(
@@ -57,4 +59,20 @@ puts "Creating the users"
         p user   
     end
 end
-puts "Finishing creating the users"
+puts "Users: Finishing creating the users"
+
+puts "Game:  creating the Game"
+#Leer el archivo File.read
+#parserar el archivo a objeto de Ruby con JSON.parse
+game_data = JSON.parse(File.read("db/games.json"), symbolize_names: true)
+    # p game_data
+#Recorriendo cada uno de los registros
+game_data.each do |game_data|
+    #Crear el juego
+    game = Game.create(game_data) #aprovechando que el archivo punto JSON tiene el los parámetros de hashes igual  a las columnas de la data Game por lo que se vuelve más fácil crearlos
+    unless game.persisted?
+        puts game.errors.full_messages.join(", ")
+        p game   
+    end
+end
+puts "Game: Finishing creating the Game"
