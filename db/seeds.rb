@@ -38,17 +38,23 @@ puts "Destroying all users"
 User.destroy_all
 puts "Creating the users"
 10.times do |n|
+   first_name= Faker::Name.first_name
    user= User.create(
     username: Faker::Internet.unique.username(specifier: 6..11),
-    email: Faker::Internet.unique.email(domain: "codeable.com"),
-    first_name: "Testino#{n+1}",
-    last_name: "Probino#{n+1}",
-    birth_date: "1988-01-01"
+    email: Faker::Internet.unique.email(name: first_name, domain: "codeable.com"),
+    first_name: first_name,
+    last_name: Faker::Name.last_name,
+    birth_date: Faker::Date.birthday(min_age: 18, max_age: 120)
     )
-    if user.persisted?
-        puts "Usario creado"
-    else
+    # if user.persisted?
+    #     puts "Usario creado"
+    # else
+    #     puts user.errors.full_messages.join(", ")
+    #     p user
+    # end
+    unless user.persisted?
         puts user.errors.full_messages.join(", ")
-        p user
+        p user   
     end
 end
+puts "Finishing creating the users"
