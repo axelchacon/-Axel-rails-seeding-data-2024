@@ -36,8 +36,12 @@
 require "faker"
 require "json"
 puts "Destroying all data"
-User.destroy_all
+#Borrar las tablas intermedias siquieres que corra bien el rails db:seed sino te va a salir error
+Critic.destroy_all
+#Borrar  tablas independientes
 Game.destroy_all
+User.destroy_all
+
 puts "Users: Creating the users"
 10.times do |n|
    first_name= Faker::Name.first_name
@@ -77,6 +81,27 @@ game_data.each do |game_data|
 end
 puts "Game: Finishing creating the Game"
 
-puts "Critics: Starting creating the Game"
-
-puts "Critics: Finishing creating the Game"
+puts "Critics: Starting creating the Critics"
+    games = Game.all
+    games.each do |game|
+        users = User.all.to_a
+        rand(1..3).times  do #rand(1..3).times {puts "Times"} , imprime de manera random 2 veces times y poene el número 2
+            user = users.sample # evitamos que un usuario haga 2  a más críticas a u mismo juego, a que la critica es unica
+            critic = Critic.new
+            critic.title = Faker::Lorem.sentence(word_count: 3)
+            critic.body =  Faker::Lorem.paragraph
+            critic.game_id= game.id # es game porque ya lo estamos llamando destro del each
+            critic.user_id= user.id # es user porque tenenemos que crear la llamada dentro del each
+            users.delete(user) # evitamos que un usuario haga 2  a más críticas a u mismo juego, a que la critica es unica
+            critic.save # evitamos que un usuario haga 2  a más críticas a u mismo juego, a que la critica es unica
+            unless critic.persisted?
+                puts critic.errors.full_messages.join(", ")
+                p critic   
+            end
+        end
+    end
+puts "Critics: Finishing creating the Critics"
+# users =User.all #[{user:1, user:2, user:3}]
+# user = users.sample # user:2
+# users.delete(user) # [{user:1, user:2, user:3}].delete({user:2})
+# # users = [{user:1, user:3}]
