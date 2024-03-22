@@ -76,3 +76,7 @@ game_data.each do |game_data|
     end
 end
 puts "Game: Finishing creating the Game"
+
+puts "Critics: Starting creating the Game"
+
+puts "Critics: Finishing creating the Game"
